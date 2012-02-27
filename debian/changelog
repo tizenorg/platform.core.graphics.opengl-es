@@ -1,0 +1,7 @@
+opengl-es (0.1.1-4) unstable; urgency=low
+
+  * Initialize version 
+  * Git: slp/pkgs/o/opengl-es
+  * Tag: opengl-es_0.1.1-4
+
+ -- Minsu Han <minsu81.han@samsung.com>  Tue, 06 Dec 2011 19:25:29 +0900
