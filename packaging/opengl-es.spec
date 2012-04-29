@@ -13,8 +13,6 @@ License:    samsung
 Source0:    opengl-es-0.1.1.tar.gz
 %ifarch %{ix86}
 Requires:   simulator-opengl
-%else
-Requires:   opengl-es-drv
 %endif
 
 
@@ -32,8 +30,6 @@ Group:      libs
 Requires:   %{name} = %{version}-%{release}
 %ifarch %{ix86}
 Requires:   simulator-opengl-devel
-%else
-Requires:   opengl-es-drv-devel
 %endif
 
 %description -n opengl-es-devel
