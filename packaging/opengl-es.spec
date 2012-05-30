@@ -11,6 +11,7 @@ Release:    1
 Group:      libs
 License:    samsung
 Source0:    opengl-es-0.1.1.tar.gz
+Source1001: packaging/opengl-es.manifest 
 %ifarch %{ix86}
 Requires:   simulator-opengl
 %endif
@@ -46,6 +47,7 @@ metapackage for development files of the OpenGL ES library
 
 
 %build
+cp %{SOURCE1001} .
 
 
 %install
@@ -56,8 +58,10 @@ cp -a ./%{PKGPATH}/*.pc %{buildroot}%{_libdir}/pkgconfig/
 
 
 %files
+%manifest opengl-es.manifest
 %defattr(-,root,root,-)
 %files -n opengl-es-devel
+%manifest opengl-es.manifest
 %defattr(-,root,root,-)
 %{_libdir}/pkgconfig/opengl-es-11.pc
 %{_libdir}/pkgconfig/opengl-es-20.pc
