@@ -1,3 +1,4 @@
+#sbs-git:slp/pkgs/o/opengl-es opengl-es 0.1.1 0d774b1127022844afc7e7eb99b76bedb95f8fe9
 %ifarch %{ix86}
 %define PKGPATH "pkgconfig_i686"
 %else
@@ -7,12 +8,14 @@
 Name:       opengl-es
 Summary:    metapackage for the OpenGL ES library
 Version:    0.1.1
-Release:    1
+Release:    2
 Group:      libs
 License:    samsung
-Source0:    opengl-es-0.1.1.tar.gz
+Source0:    %{name}-%{version}.tar.gz
 %ifarch %{ix86}
 Requires:   simulator-opengl
+%else
+Requires:   opengl-es-drv
 %endif
 
 
@@ -22,17 +25,17 @@ metapackage for the OpenGL ES library
  .
  It does not provide any drivers itself..
 
-
-
-%package -n opengl-es-devel
+%package devel
 Summary:    metapackage for development files of the OpenGL ES library
 Group:      libs
 Requires:   %{name} = %{version}-%{release}
-%ifarch %{ix86}
+%ifnarch %{ix86}
+Requires:   opengl-es-drv-devel
+%else
 Requires:   simulator-opengl-devel
 %endif
 
-%description -n opengl-es-devel
+%description devel
 metapackage for development files of the OpenGL ES library
  This is a meta package that will point to the latest development libraries,
  header files needed by programs that want to compile with OpenGL ES.
@@ -42,7 +45,7 @@ metapackage for development files of the OpenGL ES library
 
 
 %prep
-%setup -q -n %{name}-%{version}
+%setup -q
 
 
 %build
@@ -57,7 +60,8 @@ cp -a ./%{PKGPATH}/*.pc %{buildroot}%{_libdir}/pkgconfig/
 
 %files
 %defattr(-,root,root,-)
-%files -n opengl-es-devel
+
+%files devel
 %defattr(-,root,root,-)
 %{_libdir}/pkgconfig/opengl-es-11.pc
 %{_libdir}/pkgconfig/opengl-es-20.pc
