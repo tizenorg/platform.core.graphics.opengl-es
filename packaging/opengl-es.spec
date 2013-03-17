@@ -12,7 +12,7 @@ Release:    4
 Group:      libs
 License:    samsung
 Source0:    %{name}-%{version}.tar.gz
-%ifarch %{ix86}
+%if 0%{?simulator}
 Requires:   simulator-opengl
 %else
 Requires:   opengl-es-drv
@@ -29,10 +29,11 @@ metapackage for the OpenGL ES library
 Summary:    metapackage for development files of the OpenGL ES library
 Group:      libs
 Requires:   %{name} = %{version}-%{release}
-%ifnarch %{ix86}
-Requires:   opengl-es-drv-devel
-%else
+
+%if 0%{?simulator}
 Requires:   simulator-opengl-devel
+%else
+Requires:   opengl-es-drv-devel
 %endif
 
 %description devel
