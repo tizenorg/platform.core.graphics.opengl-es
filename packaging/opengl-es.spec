@@ -1,4 +1,3 @@
-#sbs-git:slp/pkgs/o/opengl-es opengl-es 0.1.1 0d774b1127022844afc7e7eb99b76bedb95f8fe9
 %ifarch %{ix86}
 %define PKGPATH "pkgconfig_i686"
 %else
@@ -6,11 +5,11 @@
 %endif
 
 Name:       opengl-es
-Summary:    metapackage for the OpenGL ES library
+Summary:    Meta Package for the OpenGL ES library
 Version:    0.1.1
 Release:    4
-Group:      libs
-License:    samsung
+Group:      Graphics/Library
+License:    Apache-2.0
 Source0:    %{name}-%{version}.tar.gz
 %ifarch %{ix86}
 Requires:   simulator-opengl
@@ -26,8 +25,8 @@ metapackage for the OpenGL ES library
  It does not provide any drivers itself..
 
 %package devel
-Summary:    metapackage for development files of the OpenGL ES library
-Group:      libs
+Summary:    Meta Package for development files of the OpenGL ES library
+Group:      Development/Graphics
 Requires:   %{name} = %{version}-%{release}
 
 %ifarch %{ix86}
@@ -53,13 +52,13 @@ metapackage for development files of the OpenGL ES library
 
 
 %install
-rm -rf %{buildroot}
 
 mkdir -p %{buildroot}%{_libdir}/pkgconfig
 cp -a ./%{PKGPATH}/*.pc %{buildroot}%{_libdir}/pkgconfig/
 
 
 %files
+%license LICENSE
 %manifest opengl-es.manifest
 %defattr(-,root,root,-)
 
