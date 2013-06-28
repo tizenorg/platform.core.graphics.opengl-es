@@ -11,6 +11,7 @@ Release:    4
 Group:      Graphics/Library
 License:    Apache-2.0
 Source0:    %{name}-%{version}.tar.gz
+Source1001: 	opengl-es.manifest
 %ifarch %{ix86}
 Requires:   simulator-opengl
 %else
@@ -46,6 +47,7 @@ metapackage for development files of the OpenGL ES library
 
 %prep
 %setup -q
+cp %{SOURCE1001} .
 
 
 %build
@@ -58,11 +60,13 @@ cp -a ./%{PKGPATH}/*.pc %{buildroot}%{_libdir}/pkgconfig/
 
 
 %files
+%manifest %{name}.manifest
 %license LICENSE
 %manifest opengl-es.manifest
 %defattr(-,root,root,-)
 
 %files devel
+%manifest %{name}.manifest
 %defattr(-,root,root,-)
 %{_libdir}/pkgconfig/opengl-es-11.pc
 %{_libdir}/pkgconfig/opengl-es-20.pc
