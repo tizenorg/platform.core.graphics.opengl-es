@@ -12,11 +12,7 @@ Group:      Graphics/Library
 License:    Apache-2.0
 Source0:    %{name}-%{version}.tar.gz
 Source1001: 	opengl-es.manifest
-%ifarch %{ix86}
-Requires:   simulator-opengl
-%else
 Requires:   opengl-es-drv
-%endif
 
 
 %description
@@ -29,12 +25,7 @@ metapackage for the OpenGL ES library
 Summary:    Meta Package for development files of the OpenGL ES library
 Group:      Development/Graphics
 Requires:   %{name} = %{version}-%{release}
-
-%ifarch %{ix86}
-Requires:   simulator-opengl-devel
-%else
 Requires:   opengl-es-drv-devel
-%endif
 
 %description devel
 metapackage for development files of the OpenGL ES library
